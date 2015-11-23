@@ -85,7 +85,7 @@ class MySQLParser
              * If the current multi-line cache is not null, all commands up to the next delimiter
              * belong to this command
              */
-            if (!is_null($multiLineCommand)) {
+            if ($multiLineCommand !== null) {
                 $firstCommand = array_shift($instructions);
                 // If this is the only instruction here and there is no Delimiter
                 // append to current file cache and continue. Else write to array and continue with next line
