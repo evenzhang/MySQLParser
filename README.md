@@ -1,5 +1,4 @@
-[![Build Status](https://travis-ci.org/waza-ari/MySQLParser.svg?branch=master)](https://travis-ci.org/waza-ari/MySQLParser)
-
+[![Build Status](https://travis-ci.org/waza-ari/MySQLParser.svg?branch=master)](https://travis-ci.org/waza-ari/MySQLParser) [![Latest Stable Version](https://poser.pugx.org/wazaari/mysql-parser/v/stable)](https://packagist.org/packages/wazaari/mysql-parser) [![Total Downloads](https://poser.pugx.org/wazaari/mysql-parser/downloads)](https://packagist.org/packages/wazaari/mysql-parser) [![Latest Unstable Version](https://poser.pugx.org/wazaari/mysql-parser/v/unstable)](https://packagist.org/packages/wazaari/mysql-parser) [![License](https://poser.pugx.org/wazaari/mysql-parser/license)](https://packagist.org/packages/wazaari/mysql-parser) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/waza-ari/MySQLParser/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/waza-ari/MySQLParser/?branch=master)
 # MySQLParser
 Parser for MySQL files including delimiter support
 
