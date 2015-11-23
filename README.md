@@ -75,3 +75,9 @@ The package name is `wazaari/MySQLParser`. Have a look at
 [this blog entry](http://blog.doh.ms/2014/10/13/installing-composer-packages/) on how to install composer packages. In
 short, just use `composer require wazaari/MySQLParser` followed by `composer install`. A proper `.lock` file will
 be generated automatically.
+
+## Open Issues
+
+Currently, escaped delimiters are recognized when escaped using a backslash. However, MySQL allows the usage
+ of delimiter variables in quoted environments without escape character, which currently is not recognized by this
+ library.
