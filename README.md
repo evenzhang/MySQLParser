@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/waza-ari/MySQLParser.svg?branch=master)](https://travis-ci.org/waza-ari/MySQLParser)
+
 # MySQLParser
 Parser for MySQL files including delimiter support
 

@@ -1,9 +1,9 @@
 {
-    "name": "wazaari/MySQLParser",
+    "name": "wazaari/mysql-parser",
     "description": "Parser for MySQL files including DELIMITER support",
     "type": "library",
     "license": "MIT",
-    "version": "0.1",
+    "version": "1.0.0-RC1",
     "authors": [
         {
             "name": "Daniel Herrmann",
