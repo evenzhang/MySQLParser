@@ -44,7 +44,7 @@ class MySQLParser
         }
 
         //Initialize result array
-        $_lineArray = [];
+        $_lineArray = array();
 
         //Initialize multi-line cache
         $multiLineCommand = null;
@@ -62,10 +62,10 @@ class MySQLParser
             //Check if line starts with DELIMITER and extract it
             if ($this->startsWith($line, $this->delimiterString)) {
                 $currentDelimiter = trim(substr($line, strlen($this->delimiterString)));
-                $_lineArray[] = [
+                $_lineArray[] = array(
                     'command' => $this->delimiterString . ' ' . $currentDelimiter,
                     'delimiter' => null,
-                ];
+                );
                 continue;
             }
 
@@ -92,10 +92,10 @@ class MySQLParser
                 // Otherwise write to array and proceed with this line
                 if (count($instructions) == 0) {
                     if (substr($line, -strlen($currentDelimiter)) == $currentDelimiter) {
-                        $_lineArray[] = [
+                        $_lineArray[] = array(
                             'command' => $multiLineCommand . ' ' . $firstCommand,
                             'delimiter' => $currentDelimiter
-                        ];
+                        );
                         $multiLineCommand = null;
                         continue;
                     } else {
@@ -117,10 +117,10 @@ class MySQLParser
 
             //Proceed with all other instructions as usual
             foreach ($instructions as $i) {
-                $_lineArray[] = [
+                $_lineArray[] = array(
                     'command' => $i,
                     'delimiter' => $currentDelimiter
-                ];
+                );
             }
         }
 
