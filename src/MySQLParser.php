@@ -26,10 +26,11 @@ class MySQLParser
      *
      * @param $file
      * @param string $defaultDelimiter
+     * @param boolean $appendDelimiterCommand Controls whether the Delimiter command itself should be returned
      * @return array
      * @throws \Exception
      */
-    public function parseFile($file, $defaultDelimiter = ";")
+    public function parseFile($file, $defaultDelimiter = ";", $appendDelimiterCommand = false)
     {
         $currentDelimiter = $defaultDelimiter;
 
@@ -62,10 +63,12 @@ class MySQLParser
             //Check if line starts with DELIMITER and extract it
             if ($this->startsWith($line, $this->delimiterString)) {
                 $currentDelimiter = trim(substr($line, strlen($this->delimiterString)));
-                $_lineArray[] = array(
-                    'command' => $this->delimiterString . ' ' . $currentDelimiter,
-                    'delimiter' => null,
-                );
+                if ($appendDelimiterCommand === true) {
+                    $_lineArray[] = array(
+                        'command' => $this->delimiterString . ' ' . $currentDelimiter,
+                        'delimiter' => null,
+                    );
+                }
                 continue;
             }
 
