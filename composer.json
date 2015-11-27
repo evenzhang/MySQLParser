@@ -3,7 +3,6 @@
     "description": "Parser for MySQL files including DELIMITER support",
     "type": "library",
     "license": "MIT",
-    "version": "1.0.0-RC1",
     "authors": [
         {
             "name": "Daniel Herrmann",
