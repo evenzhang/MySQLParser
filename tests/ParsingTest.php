@@ -88,6 +88,33 @@ class ParsingTest extends PHPUnit_Framework_TestCase
         ),
     );
 
+    private $basicDelimiterTestParseWithoutDelimiterResult = array (
+        0 => array (
+            'command' => 'SELECT * FROM `exampleTable`',
+            'delimiter' => ';',
+        ),
+        1 => array (
+            'command' => 'UPDATE `example_table` SET `a` = "asdas" WHERE `col1` = "asd"',
+            'delimiter' => '//',
+        ),
+        2 => array (
+            'command' => 'DROP TABLE `c`',
+            'delimiter' => '//',
+        ),
+        3 => array (
+            'command' => 'DROP TABLE `d`',
+            'delimiter' => '//',
+        ),
+        4 => array (
+            'command' => 'DROP TABLE `a`',
+            'delimiter' => ';',
+        ),
+        5 => array (
+            'command' => 'DROP TABLE `b`',
+            'delimiter' => ';',
+        ),
+    );
+
     private $basicDelimiterTestWithEscapedDelimiterParseResult = array (
         0 => array (
             'command' => 'SELECT * FROM `exampl\;eTable`',
@@ -118,6 +145,33 @@ class ParsingTest extends PHPUnit_Framework_TestCase
             'delimiter' => ';',
         ),
         7 => array (
+            'command' => 'DROP TABLE `b`',
+            'delimiter' => ';',
+        ),
+    );
+
+    private $basicDelimiterTestWithEscapedDelimiterParseWithoutDelimiterResult = array (
+        0 => array (
+            'command' => 'SELECT * FROM `exampl\;eTable`',
+            'delimiter' => ';',
+        ),
+        1 => array (
+            'command' => 'UPDATE `example_table` SET `a` = "asdas" WHERE `col1` = "asd"',
+            'delimiter' => '//',
+        ),
+        2 => array (
+            'command' => 'DROP TABLE `c`',
+            'delimiter' => '//',
+        ),
+        3 => array (
+            'command' => 'DROP TABLE `d`',
+            'delimiter' => '//',
+        ),
+        4 => array (
+            'command' => 'DROP TABLE `a`',
+            'delimiter' => ';',
+        ),
+        5 => array (
             'command' => 'DROP TABLE `b`',
             'delimiter' => ';',
         ),
@@ -176,7 +230,7 @@ class ParsingTest extends PHPUnit_Framework_TestCase
     {
         $this->assertEquals(
             $this->basicDelimiterTestParseResult,
-            $this->parser->parseFile("tests/testData/basicDelimiterTest.sql")
+            $this->parser->parseFile("tests/testData/basicDelimiterTest.sql", ";", true)
         );
     }
 
@@ -184,7 +238,23 @@ class ParsingTest extends PHPUnit_Framework_TestCase
     {
         $this->assertEquals(
             $this->basicDelimiterTestWithEscapedDelimiterParseResult,
-            $this->parser->parseFile("tests/testData/delimiterWithEscapedTest.sql")
+            $this->parser->parseFile("tests/testData/delimiterWithEscapedTest.sql", ";", true)
+        );
+    }
+
+    public function testBasicDelimiterWithoutDelimiterTestFile()
+    {
+        $this->assertEquals(
+            $this->basicDelimiterTestParseWithoutDelimiterResult,
+            $this->parser->parseFile("tests/testData/basicDelimiterTest.sql", ";", false)
+        );
+    }
+
+    public function testDelimiterWithEscapeWithoutDelimiterTestFile()
+    {
+        $this->assertEquals(
+            $this->basicDelimiterTestWithEscapedDelimiterParseWithoutDelimiterResult,
+            $this->parser->parseFile("tests/testData/delimiterWithEscapedTest.sql", ";", false)
         );
     }
 }
